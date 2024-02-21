@@ -280,6 +280,9 @@ def real_time_order_dispatch_algorithm():
                             delta_t = 1 + manhattan_distance(matched_driver[1], matched_order[1][:2]) + manhattan_distance(matched_order[1][:2], matched_order[3])    
                             matched_driver[0] = t + delta_t 
 
+                            # update the matched driver's location
+                            matched_driver[1]=matched_order[3]
+
                             #Append to transition data.
                             
                             reward = BASE_REWARD_PER_TRIP + REWARD_FOR_DISTANCE_PARAMETER  * manhattan_distance(matched_order[1][:2], matched_order[3])  
@@ -595,6 +598,9 @@ def real_time_order_dispatch_algorithm_revised( allocation, NUM_EPISODES=500):
 
                     delta_t = 1 + manhattan_distance(matched_driver[1], matched_order[1][:2]) + manhattan_distance(matched_order[1][:2], matched_order[3])    
                     matched_driver[0] = t + delta_t 
+
+                    # update the matched driver's location
+                    matched_driver[1]=matched_order[3]
 
                     #Append to transition data.
                     
